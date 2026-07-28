@@ -1,0 +1,49 @@
+<!-- DMS at Y537 of apo ERα monomer: chain A protein only -->
+<ROSETTASCRIPTS>
+    <SCOREFXNS>
+        <ScoreFunction name="ref15" weights="ref2015"/>
+    </SCOREFXNS>
+
+    <RESIDUE_SELECTORS>
+        <Index name="mut_site" resnums="537A"/>
+        <!-- 8 Å shell around the mutation site -->
+        <Neighborhood name="shell" selector="mut_site" distance="8.0"/>
+        <Not name="frozen" selector="shell"/>
+        <True name="all"/>
+    </RESIDUE_SELECTORS>
+
+    <TASKOPERATIONS>
+        <InitializeFromCommandline name="init"/>
+        <IncludeCurrent name="current"/>
+        <LimitAromaChi2 name="limitchi2" chi2max="110" chi2min="70" include_trp="True"/>
+        <ExtraRotamersGeneric name="ex1_ex2" ex1="1" ex2="1"/>
+        <!-- Freeze residues outside the shell; only repack (no design) -->
+        <OperateOnResidueSubset name="norepack" selector="frozen">
+            <PreventRepackingRLT/>
+        </OperateOnResidueSubset>
+        <OperateOnResidueSubset name="restrict2repacking" selector="all">
+            <RestrictToRepackingRLT/>
+        </OperateOnResidueSubset>
+    </TASKOPERATIONS>
+
+    <MOVERS>
+        <FastRelax name="FastRelax" scorefxn="ref15"
+            cartesian="false" bondangle="false" bondlength="false"
+            min_type="dfpmin_armijo_nonmonotone"
+            task_operations="init,current,ex1_ex2,limitchi2,norepack,restrict2repacking"
+            relaxscript="InterfaceDesign2019"
+            repeats="5">
+            <MoveMap name="MM">
+                <Chain number="1" chi="true" bb="false"/>  <!-- chain A: chi only outside shell -->
+                <!-- Shell residues get full backbone + chi freedom -->
+                <ResidueSelector selector="shell" chi="true" bb="true"/>
+            </MoveMap>
+        </FastRelax>
+    </MOVERS>
+
+    <APPLY_TO_POSE/>
+
+    <PROTOCOLS/>
+
+    <OUTPUT scorefxn="ref15"/>
+</ROSETTASCRIPTS>

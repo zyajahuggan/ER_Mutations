@@ -1,0 +1,5 @@
+condition,cluster,k,seed,sample,PC1,PC2,dist_to_centroid,cluster_size,cif_path
+WT mono apo,0,2,200,1,-31.136441507872988,-0.9853401297939004,0.046142071301733756,594,../outputs/analysis/pca_monomer/cluster_reps/wt_mono_apo_cluster_0_rep.cif
+WT mono apo,1,2,137,1,12.63010466441003,-4.119433055349033,0.05607332050495393,656,../outputs/analysis/pca_monomer/cluster_reps/wt_mono_apo_cluster_1_rep.cif
+WT mono holo,0,2,153,2,12.846643825583948,2.550047168179526,0.47665341480338946,1124,../outputs/analysis/pca_monomer/cluster_reps/wt_mono_holo_cluster_0_rep.cif
+WT mono holo,1,2,31,3,-29.488653753165856,5.01417595499701,0.5664331802569674,126,../outputs/analysis/pca_monomer/cluster_reps/wt_mono_holo_cluster_1_rep.cif

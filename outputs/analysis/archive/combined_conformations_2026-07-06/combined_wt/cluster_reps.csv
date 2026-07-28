@@ -1,0 +1,3 @@
+cluster,size,variant,state,seed,sample,PC1,PC2,cif_path
+0,1300,WT,apo,70,2,28.697530028104673,0.2151502755591704,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_wt/WT_apo_cluster_0_rep.cif
+1,1200,WT,holo,4,1,-31.114054754906313,0.1741899720088812,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_wt/WT_holo_cluster_1_rep.cif

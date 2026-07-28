@@ -1,0 +1,5 @@
+cluster,size,seed,sample,PC1,PC2,cif_path
+0,475,223,4,-23.161150912913236,-0.7847921278826826,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_mono_apo/cluster_0_rep.cif
+1,161,242,3,21.005840253660327,3.105864329897893,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_mono_apo/cluster_1_rep.cif
+2,468,11,0,20.888596039432592,-1.052934272197818,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_mono_apo/cluster_2_rep.cif
+3,104,77,4,-23.010229449177046,3.401717073409895,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_mono_apo/cluster_3_rep.cif

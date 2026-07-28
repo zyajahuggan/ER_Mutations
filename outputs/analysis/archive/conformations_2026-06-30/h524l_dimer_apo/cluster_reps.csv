@@ -1,0 +1,3 @@
+cluster,size,seed,sample,PC1,PC2,cif_path
+0,666,231,4,5.901314177486839,-4.474365516853504,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/conformations/h524l_dimer_apo/cluster_0_rep.cif
+1,523,154,2,-5.277995517779343,7.3048337247936335,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/conformations/h524l_dimer_apo/cluster_1_rep.cif

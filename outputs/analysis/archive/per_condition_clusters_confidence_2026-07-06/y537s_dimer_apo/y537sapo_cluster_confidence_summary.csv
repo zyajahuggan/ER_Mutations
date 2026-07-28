@@ -1,0 +1,5 @@
+,ranking_score,ranking_score,ranking_score,iptm,iptm,iptm,ptm,ptm,ptm,fraction_disordered,fraction_disordered,fraction_disordered,has_clash,has_clash,has_clash,mean_plddt,mean_plddt,mean_plddt
+,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count,mean,std,count
+cluster,,,,,,,,,,,,,,,,,,
+0.0,0.9147654093836247,0.004996792653873485,1087,0.9113063477460902,0.0033715561107952705,1087,0.9200091996320148,0.0003033089516436745,1087,0.0,0.0,1087,0.0,0.0,1087,90.543226776972,0.11619893565911683,1087
+1.0,0.9140650406504066,0.00493189658161817,123,0.9110569105691058,0.003086992310441251,123,0.92,0.0,123,0.0,0.0,123,0.0,0.0,123,90.56132249464902,0.10796961997454417,123

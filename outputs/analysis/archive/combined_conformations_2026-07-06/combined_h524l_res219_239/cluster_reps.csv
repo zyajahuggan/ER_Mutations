@@ -1,0 +1,4 @@
+cluster,size,variant,state,seed,sample,PC1,PC2,cif_path
+0,822,H524L,apo,231,3,11.493083598742468,0.19110796480798342,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_h524l_res219_239/H524L_apo_cluster_0_rep.cif
+1,1653,H524L,holo,175,1,-5.663561660807211,0.7257525734569725,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_h524l_res219_239/H524L_holo_cluster_1_rep.cif
+2,25,H524L,apo,105,2,-2.777596858535521,-55.900356630989705,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_h524l_res219_239/H524L_apo_cluster_2_rep.cif

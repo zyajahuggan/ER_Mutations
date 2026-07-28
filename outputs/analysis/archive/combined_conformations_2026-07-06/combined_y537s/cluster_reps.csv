@@ -1,0 +1,3 @@
+cluster,size,variant,state,seed,sample,PC1,PC2,cif_path
+0,2483,Y537S,apo,102,1,-0.37788811388909754,-0.0033568123534001714,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_y537s/Y537S_apo_cluster_0_rep.cif
+1,17,Y537S,apo,153,1,56.682703321264114,-0.5405624977808828,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/combined_conformations/combined_y537s/Y537S_apo_cluster_1_rep.cif

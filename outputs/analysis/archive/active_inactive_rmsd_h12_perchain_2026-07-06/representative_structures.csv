@@ -1,0 +1,11 @@
+variant,state,call,chain,seed,sample,rmsd_active,rmsd_inactive,cif_path
+H524L,apo,active,B,81,4,1.367,12.936,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/H524L_apo_active_chainB_seed81_sample4.cif
+H524L,apo,inactive,A,120,1,12.096,3.215,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/H524L_apo_inactive_chainA_seed120_sample1.cif
+H524L,holo,inactive,B,229,0,12.297,2.705,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/H524L_holo_inactive_chainB_seed229_sample0.cif
+WT,apo,active,B,6,3,0.759,12.933,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/WT_apo_active_chainB_seed6_sample3.cif
+WT,apo,inactive,B,114,1,12.176,3.965,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/WT_apo_inactive_chainB_seed114_sample1.cif
+WT,holo,active,B,2,2,0.673,13.05,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/WT_holo_active_chainB_seed2_sample2.cif
+WT,holo,inactive,B,127,4,12.035,3.427,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/WT_holo_inactive_chainB_seed127_sample4.cif
+Y537S,apo,active,A,226,2,1.467,12.943,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/Y537S_apo_active_chainA_seed226_sample2.cif
+Y537S,apo,inactive,A,193,3,11.667,3.883,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/Y537S_apo_inactive_chainA_seed193_sample3.cif
+Y537S,holo,active,B,196,4,1.542,13.035,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/active_inactive/representative_structures/Y537S_holo_active_chainB_seed196_sample4.cif

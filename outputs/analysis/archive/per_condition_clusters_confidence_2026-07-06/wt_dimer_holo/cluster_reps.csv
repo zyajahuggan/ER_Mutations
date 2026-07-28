@@ -1,0 +1,4 @@
+cluster,size,seed,sample,PC1,PC2,cif_path
+0,210,157,3,31.71360178933375,8.96294650896461,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_dimer_holo/wtdimer_cluster_0_rep.cif
+1,614,47,4,-28.928750069622268,0.19089442848758617,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_dimer_holo/wtdimer_cluster_1_rep.cif
+2,378,206,0,29.011312334505106,-5.017255843897403,/scratch4/jgray21/zhuggan1/repos/ER_Mutations/outputs/analysis/updated_conformations/wt_dimer_holo/wtdimer_cluster_2_rep.cif

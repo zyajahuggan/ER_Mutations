@@ -13,21 +13,21 @@
 #      $ROSETTA/main/source/scripts/python/public/molfile_to_params.py
 #
 # Usage:
-#   cd inputs/
-#   bash ../scripts/gen_EST_params.sh
+#   cd inputs/est_ligand/
+#   bash ../../scripts/clean/gen_EST_params.sh
 
 set -euo pipefail
 
 MOLFILE_TO_PARAMS="/home/zhuggan1/scr4_jgray21/zhuggan1/rosetta/source/scripts/python/public/molfile_to_params.py"
 
-INPUTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../inputs" && pwd)"
+INPUTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../../inputs/est_ligand" && pwd)"
 EST_MOL="${INPUTS_DIR}/EST.sdf"   # download from PDB Ligand Expo → Ideal SDF
 
 if [[ ! -f "${EST_MOL}" ]]; then
     echo "ERROR: ${EST_MOL} not found."
     echo "Download estradiol ideal SDF from:"
     echo "  https://files.rcsb.org/ligands/download/EST_ideal.sdf"
-    echo "Then rename it to inputs/EST.sdf and re-run this script."
+    echo "Then rename it to inputs/est_ligand/EST.sdf and re-run this script."
     exit 1
 fi
 
@@ -41,4 +41,4 @@ echo "Generated: ${INPUTS_DIR}/EST.params"
 echo "           ${INPUTS_DIR}/EST_conformers.pdb  (if any)"
 echo
 echo "Now run the DMS:"
-echo "  cd scripts/ && sbatch submit_dms.sh"
+echo "  cd scripts/dms/ && sbatch submit_dms_dimer.sh (or the relevant submit_dms_*.sh)"

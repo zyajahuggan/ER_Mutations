@@ -16,25 +16,25 @@ source ~/.bashrc
 conda activate pyrosetta
 
 REPO=/scratch4/jgray21/zhuggan1/repos/ER_Mutations
-mkdir -p "${REPO}/logs" "${REPO}/outputs/dms_Y537_apo_1GWR"
+mkdir -p "${REPO}/logs" "${REPO}/outputs/dms/dms_1GWR/dms_Y537_apo_1GWR"
 
 # Step 1: Generate apo monomer + coactivator PDB from 1GWR (chain A protein, chain C
 # TIF2 peptide, no estradiol)
-if [[ ! -f "${REPO}/inputs/1GWR_clean_apo.pdb" ]]; then
+if [[ ! -f "${REPO}/inputs/1GWR/1GWR_clean_apo.pdb" ]]; then
     echo "[$(date)] Generating 1GWR apo monomer PDB ..."
-    python3 "${REPO}/scripts/clean_1gwr.py" \
-        --out_pdb "${REPO}/inputs/1GWR_clean_apo.pdb" \
+    python3 "${REPO}/scripts/clean/clean_1gwr.py" \
+        --out_pdb "${REPO}/inputs/1GWR/1GWR_clean_apo.pdb" \
         --apo
 else
-    echo "[$(date)] Using existing ${REPO}/inputs/1GWR_clean_apo.pdb"
+    echo "[$(date)] Using existing ${REPO}/inputs/1GWR/1GWR_clean_apo.pdb"
 fi
 
 # Step 2: DMS
 echo "[$(date)] Starting 1GWR apo monomer + peptide DMS at Y537 ..."
-python3 "${REPO}/scripts/dms_Y537_apo_1GWR.py" \
-    --wt_pdb  "${REPO}/inputs/1GWR_clean_apo.pdb" \
-    --xml     "${REPO}/scripts/dms_Y537_apo_1GWR.xml" \
-    --out_dir "${REPO}/outputs/dms_Y537_apo_1GWR" \
+python3 "${REPO}/scripts/dms/dms_Y537_apo_1GWR.py" \
+    --wt_pdb  "${REPO}/inputs/1GWR/1GWR_clean_apo.pdb" \
+    --xml     "${REPO}/scripts/dms/dms_Y537_apo_1GWR.xml" \
+    --out_dir "${REPO}/outputs/dms/dms_1GWR/dms_Y537_apo_1GWR" \
     --prefix  1GWR \
     --nstruct 5 \
     --workers "${SLURM_CPUS_PER_TASK}"

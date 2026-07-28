@@ -5,7 +5,7 @@ dms_Y537_dimer_apo.py
 Deep mutation scan at Y537 of the apo ERα homodimer (1A52, both chains, no estradiol).
 Y537 is mutated symmetrically on both chain A and chain B to model homozygous substitutions.
 
-Input:  inputs/1A52_clean_dimer_apo.pdb  (chains A and B, no ligand)
+Input:  inputs/1A52/1A52_clean_dimer_apo.pdb  (chains A and B, no ligand)
         scripts/dms_Y537_dimer_apo.xml   (FastRelax, local shell around both Y537 sites)
 
 Output: outputs/dms_Y537_dimer_apo/<tag>_rep<n>.pdb
@@ -124,12 +124,12 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Apo homodimer DMS at Y537 of ERα — symmetric mutation on both chains"
     )
-    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1A52_clean_dimer_apo.pdb"),
+    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1A52", "1A52_clean_dimer_apo.pdb"),
                         help="Apo homodimer PDB (chains A and B, no estradiol)")
     parser.add_argument("--xml",     default=os.path.join(here, "dms_Y537_dimer_apo.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMover)")

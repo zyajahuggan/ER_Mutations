@@ -11,11 +11,12 @@ within each cluster.
 Requires af3_conformations.py to have been (re)run with the
 cluster_assignments.csv output first.
 
-Usage (from the scripts/ directory):
+Usage (from the scripts/af3/ directory):
     python cluster_confidence.py [--conf_dir DIR] [--plddt] [--conditions ...]
 
     --conf_dir   : directory of per-condition subfolders holding
-                   cluster_assignments.csv (default: ../outputs/analysis/updated_conformations)
+                   cluster_assignments.csv (default:
+                   outputs/analysis/archive/per_condition_clusters_confidence_2026-07-06)
     --plddt      : also average mean per-structure pLDDT (slower - loads
                    confidences.json, which includes the full PAE matrix)
     --conditions : only run these conditions (default: all)
@@ -95,7 +96,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--conf_dir", type=Path,
-                        default=OUTPUTS / "analysis" / "updated_conformations",
+                        default=OUTPUTS / "analysis" / "archive" / "per_condition_clusters_confidence_2026-07-06",
                         help="Directory containing per-condition cluster_assignments.csv files")
     parser.add_argument("--plddt", action="store_true",
                         help="Also average mean per-structure pLDDT (slower)")

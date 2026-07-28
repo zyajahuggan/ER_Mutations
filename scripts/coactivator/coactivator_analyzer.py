@@ -10,7 +10,7 @@ The AF-2 groove (H3/H4/H5/H12) is a different surface from the dimer
 interface (mainly H10/H11) -- neither existing script touches it. This one
 grafts the GRIP1/SRC-2 NR-box-II coactivator peptide (LXXLL motif) from PDB
 3ERD (Shiau et al. 1998 -- ERa LBD + diethylstilbestrol + coactivator peptide,
-inputs/3erd.cif) onto our own relaxed WT/H524L/Y537S apo and holo monomer
+inputs/active_inactive_refs/3erd.cif) onto our own relaxed WT/H524L/Y537S apo and holo monomer
 structures, by:
 
   1. Superposing 3ERD chain A onto the target's chain A using an iteratively
@@ -73,9 +73,9 @@ from pyrosetta.rosetta.numeric import xyzVector_double_t as V3
 logger = logging.getLogger(__name__)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
-EST_PARAMS = os.path.join(REPO, "inputs", "EST.params")
-DONOR_CIF = os.path.join(REPO, "inputs", "3erd.cif")
+REPO = os.path.dirname(os.path.dirname(HERE))
+EST_PARAMS = os.path.join(REPO, "inputs", "est_ligand", "EST.params")
+DONOR_CIF = os.path.join(REPO, "inputs", "active_inactive_refs", "3erd.cif")
 
 PEPTIDE_CHAIN = "C"
 DONOR_RECEPTOR_CHAIN = "A"

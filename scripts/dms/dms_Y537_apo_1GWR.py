@@ -129,12 +129,12 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Apo monomer DMS at Y537 of ERα + TIF2 peptide (1GWR) — A_C interface"
     )
-    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1GWR_clean_apo.pdb"),
+    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1GWR", "1GWR_clean_apo.pdb"),
                         help="Apo monomer PDB (chain A protein, chain C peptide, no estradiol)")
     parser.add_argument("--xml",     default=os.path.join(here, "dms_Y537_apo_1GWR.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMover A_C)")

@@ -7,8 +7,8 @@ Deep mutation scan at Y537 of the holo ERα homodimer + real TIF2 coactivator pe
 symmetrically on chain A and chain B. Two InterfaceAnalyzerMover passes score the
 AB_CD (protein dimer vs both ligands) and AB_EF (protein dimer vs both peptides) interfaces.
 
-Input:  inputs/1GWR_clean_dimer.pdb        (chains A+B protein, C+D estradiol, E+F peptide)
-        inputs/EST.params                   (Rosetta params for estradiol)
+Input:  inputs/1GWR/1GWR_clean_dimer.pdb        (chains A+B protein, C+D estradiol, E+F peptide)
+        inputs/est_ligand/EST.params                   (Rosetta params for estradiol)
         scripts/dms_Y537_dimer_1GWR.xml     (FastRelax + InterfaceAnalyzerMovers AB_CD, AB_EF)
 
 Output: outputs/dms_Y537_dimer_holo_1GWR/<tag>_rep<n>.pdb
@@ -150,15 +150,15 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Holo homodimer DMS at Y537 of ERα + TIF2 peptides (1GWR) — "
                      "symmetric mutation, AB_CD and AB_EF interfaces"
     )
-    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1GWR_clean_dimer.pdb"),
+    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1GWR", "1GWR_clean_dimer.pdb"),
                         help="Holo homodimer PDB (chains A+B protein, C+D estradiol, E+F peptide)")
-    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "EST.params"),
+    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "est_ligand", "EST.params"),
                         help="Rosetta .params file for estradiol")
     parser.add_argument("--xml",        default=os.path.join(here, "dms_Y537_dimer_1GWR.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMovers AB_CD, AB_EF)")

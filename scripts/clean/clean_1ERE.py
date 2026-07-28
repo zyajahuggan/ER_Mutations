@@ -21,9 +21,9 @@ Removes waters in dimer modes; keeps chain-A waters in monomer modes unless --no
 
 Usage (from scripts/):
     python clean_1ERE.py                                                    # holo monomer
-    python clean_1ERE.py --apo        --out_pdb ../inputs/1ERE_clean_apo.pdb
-    python clean_1ERE.py --dimer      --out_pdb ../inputs/1ERE_clean_dimer_apo.pdb
-    python clean_1ERE.py --dimer-holo --out_pdb ../inputs/1ERE_clean_dimer.pdb
+    python clean_1ERE.py --apo        --out_pdb ../inputs/1ERE/1ERE_clean_apo.pdb
+    python clean_1ERE.py --dimer      --out_pdb ../inputs/1ERE/1ERE_clean_dimer_apo.pdb
+    python clean_1ERE.py --dimer-holo --out_pdb ../inputs/1ERE/1ERE_clean_dimer.pdb
 """
 
 import argparse
@@ -113,11 +113,11 @@ def clean_cif(in_cif: str, out_pdb: str, chains=("A", "B"), keep_waters: bool = 
 
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(description="Clean 1ERE.cif for ER DMS")
-    parser.add_argument("--in_cif",      default=os.path.join(repo, "inputs", "1ERE.cif"))
-    parser.add_argument("--out_pdb",     default=os.path.join(repo, "inputs", "1ERE_clean.pdb"))
+    parser.add_argument("--in_cif",      default=os.path.join(repo, "inputs", "1ERE", "1ERE.cif"))
+    parser.add_argument("--out_pdb",     default=os.path.join(repo, "inputs", "1ERE", "1ERE_clean.pdb"))
     parser.add_argument("--chains",      nargs=2, default=["A", "B"],
                         help="Which biological dimer copy to keep, e.g. A B / C D / E F")
     parser.add_argument("--no_waters",   action="store_true",

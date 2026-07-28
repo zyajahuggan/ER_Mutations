@@ -69,7 +69,7 @@ def merge_condition(canonical: Path, batches: list[Path], dry_run: bool) -> None
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--output-dir", required=True, type=Path,
-                     help="e.g. outputs/af3_wt")
+                     help="e.g. outputs/af3/af3_wt")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 

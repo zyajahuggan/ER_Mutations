@@ -22,7 +22,7 @@ import shutil
 import csv
 from pathlib import Path
 
-AF3_OUT  = Path("/home/zhuggan1/scr4_jgray21/zhuggan1/repos/ER_Mutations/outputs/af3_Y537S")
+AF3_OUT  = Path("/home/zhuggan1/scr4_jgray21/zhuggan1/repos/ER_Mutations/outputs/af3/af3_Y537S")
 ANALYSIS = AF3_OUT / "analysis"
 TOP3_DIR = ANALYSIS / "top3_per_variant"
 

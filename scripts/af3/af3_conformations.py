@@ -39,20 +39,20 @@ except ImportError:
 
 
 # ── paths ─────────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUTS   = REPO_ROOT / "outputs"
 INPUTS    = REPO_ROOT / "inputs"
 
 CONDITIONS = [
     # (label,            condition_dir,                                   reference_pdb,                    chains,      file_prefix)
-    ("WT dimer holo",    OUTPUTS/"af3_wt"/"1a52_wt_holo",                INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "wtdimer"),
-    ("WT dimer apo",     OUTPUTS/"af3_wt"/"1a52_wt_apo",                 INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "wtapo"),
-    ("H524L dimer holo", OUTPUTS/"af3_H524L"/"1a52_h524l_holo",          INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "h524lholo"),
-    ("H524L dimer apo",  OUTPUTS/"af3_H524L"/"1a52_h524l_apo",           INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "h524lapo"),
-    ("Y537S dimer holo", OUTPUTS/"af3_Y537S"/"1a52_y537s_holo",          INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "y537sholo"),
-    ("Y537S dimer apo",  OUTPUTS/"af3_Y537S"/"1a52_y537s_apo",           INPUTS/"1A52_clean_dimer.pdb",    ["A","B"],  "y537sapo"),
-    ("WT mono holo",     OUTPUTS/"af3_wt_monomer"/"1a52_wt_monomer_holo", INPUTS/"1A52_clean_apo.pdb",     ["A"],       ""),
-    ("WT mono apo",      OUTPUTS/"af3_wt_monomer"/"1a52_wt_monomer_apo",  INPUTS/"1A52_clean_apo.pdb",     ["A"],       ""),
+    ("WT dimer holo",    OUTPUTS/"af3"/"af3_wt"/"1a52_wt_holo",                INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "wtdimer"),
+    ("WT dimer apo",     OUTPUTS/"af3"/"af3_wt"/"1a52_wt_apo",                 INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "wtapo"),
+    ("H524L dimer holo", OUTPUTS/"af3"/"af3_H524L"/"1a52_h524l_holo",          INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "h524lholo"),
+    ("H524L dimer apo",  OUTPUTS/"af3"/"af3_H524L"/"1a52_h524l_apo",           INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "h524lapo"),
+    ("Y537S dimer holo", OUTPUTS/"af3"/"af3_Y537S"/"1a52_y537s_holo",          INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "y537sholo"),
+    ("Y537S dimer apo",  OUTPUTS/"af3"/"af3_Y537S"/"1a52_y537s_apo",           INPUTS/"1A52"/"1A52_clean_dimer.pdb",    ["A","B"],  "y537sapo"),
+    ("WT mono holo",     OUTPUTS/"af3"/"af3_wt_monomer"/"1a52_wt_monomer_holo", INPUTS/"1A52"/"1A52_clean_apo.pdb",     ["A"],       ""),
+    ("WT mono apo",      OUTPUTS/"af3"/"af3_wt_monomer"/"1a52_wt_monomer_apo",  INPUTS/"1A52"/"1A52_clean_apo.pdb",     ["A"],       ""),
 ]
 
 
@@ -1227,16 +1227,16 @@ def main():
                              "(each chain of WT/H524L/Y537S dimer structures) for how "
                              "active- vs inactive-like its H12 region is, by RMSD to "
                              "--active_ref/--inactive_ref.")
-    parser.add_argument("--active_ref", type=Path, default=INPUTS / "3erd.cif",
+    parser.add_argument("--active_ref", type=Path, default=INPUTS / "active_inactive_refs" / "3erd.cif",
                         help="Active (agonist + coactivator peptide) monomer reference mmCIF "
-                             "(default: inputs/3erd.cif). 1A52 is NOT used here -- without a "
+                             "(default: inputs/active_inactive_refs/3erd.cif). 1A52 is NOT used here -- without a "
                              "bound coactivator peptide its H12 is unresolved/displaced, not "
                              "capping the pocket.")
     parser.add_argument("--active_chain", default="A",
                         help="Chain to use from --active_ref (default: A)")
-    parser.add_argument("--inactive_ref", type=Path, default=INPUTS / "3ert.cif",
+    parser.add_argument("--inactive_ref", type=Path, default=INPUTS / "active_inactive_refs" / "3ert.cif",
                         help="Inactive (antagonist) monomer reference mmCIF (default: "
-                             "inputs/3ert.cif)")
+                             "inputs/active_inactive_refs/3ert.cif)")
     parser.add_argument("--inactive_chain", default="A",
                         help="Chain to use from --inactive_ref (default: A)")
     parser.add_argument("--n_disc", type=int, default=15,
@@ -1263,21 +1263,23 @@ def main():
     residues = tuple(args.residues) if args.residues else None
 
     if args.classify_active:
-        out_dir = args.out_dir or (OUTPUTS / "analysis" / "active_inactive")
+        out_dir = args.out_dir or (OUTPUTS / "analysis" / "archive" / "active_inactive_rmsd_h12_perchain_2026-07-06")
         classify_active_inactive(args.active_ref, args.active_chain,
                                  args.inactive_ref, args.inactive_chain,
-                                 INPUTS / "1A52_clean_dimer.pdb", ["A", "B"],
+                                 INPUTS / "1A52" / "1A52_clean_dimer.pdb", ["A", "B"],
                                  out_dir, top_n=args.top_n, n_disc=args.n_disc,
                                  workers=args.workers)
         print("\n\nDone. Results in:", out_dir)
         return
 
     if args.cluster_active:
-        default_name = "cluster_vs_active_whole" if args.whole_structure else "cluster_vs_active"
-        out_dir = args.out_dir or (OUTPUTS / "analysis" / default_name)
+        if args.whole_structure:
+            out_dir = args.out_dir or (OUTPUTS / "analysis" / "cluster_vs_active_whole_2026-07-22")
+        else:
+            out_dir = args.out_dir or (OUTPUTS / "analysis" / "archive" / "cluster_vs_active_h12_2026-07-06")
         cluster_vs_active(args.active_ref, args.active_chain,
                           args.inactive_ref, args.inactive_chain,
-                          INPUTS / "1A52_clean_dimer.pdb", ["A", "B"],
+                          INPUTS / "1A52" / "1A52_clean_dimer.pdb", ["A", "B"],
                           out_dir, top_n=args.top_n, n_disc=args.n_disc,
                           k_min=k_min, k_max=k_max, forced_k=args.k,
                           method=args.method, eps=args.eps, min_samples=args.min_samples,

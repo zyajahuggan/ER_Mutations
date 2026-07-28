@@ -24,8 +24,8 @@ HOLO_COLOR = "#eb6834"
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--csv", default=os.path.join(os.path.dirname(__file__), "..", "outputs", "coactivator_scores.csv"))
-    ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "outputs", "coactivator_ddG_interface.png"))
+    ap.add_argument("--csv", default=os.path.join(os.path.dirname(__file__), "..", "..", "outputs", "coactivator_scores.csv"))
+    ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), "..", "..", "outputs", "coactivator_ddG_interface.png"))
     ap.add_argument("--show", action="store_true", help="also open an interactive window")
     args = ap.parse_args()
 

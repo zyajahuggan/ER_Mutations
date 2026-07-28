@@ -128,14 +128,14 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Holo monomer DMS at Y537 of ERα — A_B interface"
     )
-    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1A52_clean.pdb"),
+    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1A52", "1A52_clean.pdb"),
                         help="Holo monomer PDB (chain A protein, chain B estradiol)")
-    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "EST.params"),
+    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "est_ligand", "EST.params"),
                         help="Rosetta .params file for estradiol")
     parser.add_argument("--xml",        default=os.path.join(here, "dms_Y537.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMover A_B)")

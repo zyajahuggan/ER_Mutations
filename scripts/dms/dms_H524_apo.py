@@ -121,12 +121,12 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Apo monomer DMS at H524 of ERα"
     )
-    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1A52_clean_apo.pdb"),
+    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1A52", "1A52_clean_apo.pdb"),
                         help="Apo monomer PDB (chain A only, no estradiol)")
     parser.add_argument("--xml",     default=os.path.join(here, "dms_H524_apo.xml"),
                         help="RosettaScripts XML (FastRelax)")

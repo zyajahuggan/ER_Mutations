@@ -52,8 +52,8 @@ from pyrosetta.rosetta.protocols.constraint_movers import ClearConstraintsMover
 logger = logging.getLogger(__name__)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
-EST_PARAMS = os.path.join(REPO, "inputs", "EST.params")
+REPO = os.path.dirname(os.path.dirname(HERE))
+EST_PARAMS = os.path.join(REPO, "inputs", "est_ligand", "EST.params")
 
 # ── The 4 conditions ─────────────────────────────────────────────────────────
 CONDITIONS = [

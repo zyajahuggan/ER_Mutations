@@ -6,8 +6,8 @@ Deep mutation scan at H524 of the holo ERα homodimer (1A52, both chains, both e
 H524 is mutated symmetrically on chain A and chain B. Estradiol occupies chains C and D.
 InterfaceAnalyzerMover scores the AB_CD interface (protein dimer vs both ligands).
 
-Input:  inputs/1A52_clean_dimer.pdb   (chains A+B protein, chains C+D estradiol)
-        inputs/EST.params              (Rosetta params for estradiol)
+Input:  inputs/1A52/1A52_clean_dimer.pdb   (chains A+B protein, chains C+D estradiol)
+        inputs/est_ligand/EST.params              (Rosetta params for estradiol)
         scripts/dms_H524_dimer.xml     (FastRelax + InterfaceAnalyzerMover, AB_CD interface)
 
 Output: outputs/dms_H524_dimer/<tag>_rep<n>.pdb
@@ -131,14 +131,14 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Holo homodimer DMS at H524 of ERα — symmetric mutation, AB_CD interface"
     )
-    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1A52_clean_dimer.pdb"),
+    parser.add_argument("--wt_pdb",     default=os.path.join(repo, "inputs", "1A52", "1A52_clean_dimer.pdb"),
                         help="Holo homodimer PDB (chains A+B protein, chains C+D estradiol)")
-    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "EST.params"),
+    parser.add_argument("--est_params", default=os.path.join(repo, "inputs", "est_ligand", "EST.params"),
                         help="Rosetta .params file for estradiol")
     parser.add_argument("--xml",        default=os.path.join(here, "dms_H524_dimer.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMover AB_CD)")

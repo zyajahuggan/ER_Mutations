@@ -13,9 +13,9 @@ Removes AU (gold) and waters in all modes.
 
 Usage (from scripts/):
     python clean_1A52.py                                                   # holo monomer
-    python clean_1A52.py --apo       --out_pdb ../inputs/1A52_clean_apo.pdb
-    python clean_1A52.py --dimer     --out_pdb ../inputs/1A52_clean_dimer_apo.pdb
-    python clean_1A52.py --dimer-holo --out_pdb ../inputs/1A52_clean_dimer.pdb
+    python clean_1A52.py --apo       --out_pdb ../inputs/1A52/1A52_clean_apo.pdb
+    python clean_1A52.py --dimer     --out_pdb ../inputs/1A52/1A52_clean_dimer_apo.pdb
+    python clean_1A52.py --dimer-holo --out_pdb ../inputs/1A52/1A52_clean_dimer.pdb
 """
 
 import argparse
@@ -104,11 +104,11 @@ def clean_pdb(in_pdb: str, out_pdb: str, keep_waters: bool = True, apo: bool = F
 
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(description="Clean 1A52 PDB for ER DMS")
-    parser.add_argument("--in_pdb",      default=os.path.join(repo, "inputs", "1A52.pdb"))
-    parser.add_argument("--out_pdb",     default=os.path.join(repo, "inputs", "1A52_clean.pdb"))
+    parser.add_argument("--in_pdb",      default=os.path.join(repo, "inputs", "1A52", "1A52.pdb"))
+    parser.add_argument("--out_pdb",     default=os.path.join(repo, "inputs", "1A52", "1A52_clean.pdb"))
     parser.add_argument("--no_waters",   action="store_true",
                         help="Strip water molecules (monomer modes only)")
     parser.add_argument("--apo",         action="store_true",

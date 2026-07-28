@@ -9,8 +9,8 @@ Kabsch superposition onto a crystallographic reference structure.
 Usage:
     python af3_pca.py [--reference PDB] [--top_n N] [--chains {AB,A}] [--out_dir DIR]
 
-    --reference : Reference PDB for superposition (default: inputs/1A52_clean_dimer.pdb).
-                  Use inputs/1A52_clean_apo.pdb with --chains A for monomer runs.
+    --reference : Reference PDB for superposition (default: inputs/1A52/1A52_clean_dimer.pdb).
+                  Use inputs/1A52/1A52_clean_apo.pdb with --chains A for monomer runs.
     --top_n     : Use only the top N structures per condition by ranking score
                   (default: all 1250)
     --chains    : 'AB' for full dimer (default), 'A' to use chain A only
@@ -40,20 +40,20 @@ except ImportError:
 
 
 # ── paths ────────────────────────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUTS   = REPO_ROOT / "outputs"
 INPUTS    = REPO_ROOT / "inputs"
 
 # (label, condition_dir, is_dimer)
 DATASETS = [
-    ("WT dimer holo",    OUTPUTS / "af3_wt"         / "1a52_wt_holo",         True),
-    ("WT dimer apo",     OUTPUTS / "af3_wt"         / "1a52_wt_apo",          True),
-    ("H524L dimer holo", OUTPUTS / "af3_H524L"      / "1a52_h524l_holo",      True),
-    ("H524L dimer apo",  OUTPUTS / "af3_H524L"      / "1a52_h524l_apo",       True),
-    ("Y537S dimer holo", OUTPUTS / "af3_Y537S"      / "1a52_y537s_holo",      True),
-    ("Y537S dimer apo",  OUTPUTS / "af3_Y537S"      / "1a52_y537s_apo",       True),
-    ("WT mono holo",     OUTPUTS / "af3_wt_monomer" / "1a52_wt_monomer_holo", False),
-    ("WT mono apo",      OUTPUTS / "af3_wt_monomer" / "1a52_wt_monomer_apo",  False),
+    ("WT dimer holo",    OUTPUTS / "af3" / "af3_wt"         / "1a52_wt_holo",         True),
+    ("WT dimer apo",     OUTPUTS / "af3" / "af3_wt"         / "1a52_wt_apo",          True),
+    ("H524L dimer holo", OUTPUTS / "af3" / "af3_H524L"      / "1a52_h524l_holo",      True),
+    ("H524L dimer apo",  OUTPUTS / "af3" / "af3_H524L"      / "1a52_h524l_apo",       True),
+    ("Y537S dimer holo", OUTPUTS / "af3" / "af3_Y537S"      / "1a52_y537s_holo",      True),
+    ("Y537S dimer apo",  OUTPUTS / "af3" / "af3_Y537S"      / "1a52_y537s_apo",       True),
+    ("WT mono holo",     OUTPUTS / "af3" / "af3_wt_monomer" / "1a52_wt_monomer_holo", False),
+    ("WT mono apo",      OUTPUTS / "af3" / "af3_wt_monomer" / "1a52_wt_monomer_apo",  False),
 ]
 
 # colour and marker per condition label
@@ -213,7 +213,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--reference", type=Path,
-                        default=INPUTS / "1A52_clean_dimer.pdb",
+                        default=INPUTS / "1A52" / "1A52_clean_dimer.pdb",
                         help="Reference PDB for Kabsch superposition")
     parser.add_argument("--top_n",   type=int, default=None,
                         help="Use only top N structures per condition (default: all)")

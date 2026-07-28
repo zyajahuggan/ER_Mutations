@@ -16,32 +16,32 @@ source ~/.bashrc
 conda activate pyrosetta
 
 REPO=/scratch4/jgray21/zhuggan1/repos/ER_Mutations
-mkdir -p "${REPO}/logs" "${REPO}/outputs/dms_H524_dimer"
+mkdir -p "${REPO}/logs" "${REPO}/outputs/dms/dms_1A52/dms_H524_dimer"
 
 # Step 1: Generate holo dimer PDB (chains A+B protein, chains C+D estradiol)
-if [[ ! -f "${REPO}/inputs/1A52_clean_dimer.pdb" ]]; then
+if [[ ! -f "${REPO}/inputs/1A52/1A52_clean_dimer.pdb" ]]; then
     echo "[$(date)] Generating holo dimer PDB ..."
-    python3 "${REPO}/scripts/clean_1A52.py" \
-        --out_pdb "${REPO}/inputs/1A52_clean_dimer.pdb" \
+    python3 "${REPO}/scripts/clean/clean_1A52.py" \
+        --out_pdb "${REPO}/inputs/1A52/1A52_clean_dimer.pdb" \
         --dimer-holo
 else
-    echo "[$(date)] Using existing ${REPO}/inputs/1A52_clean_dimer.pdb"
+    echo "[$(date)] Using existing ${REPO}/inputs/1A52/1A52_clean_dimer.pdb"
 fi
 
 # Step 2: EST params check
-if [[ ! -f "${REPO}/inputs/EST.params" ]]; then
-    echo "ERROR: ${REPO}/inputs/EST.params not found."
-    echo "Run:  bash ${REPO}/scripts/gen_EST_params.sh"
+if [[ ! -f "${REPO}/inputs/est_ligand/EST.params" ]]; then
+    echo "ERROR: ${REPO}/inputs/est_ligand/EST.params not found."
+    echo "Run:  bash ${REPO}/scripts/clean/gen_EST_params.sh"
     exit 1
 fi
 
 # Step 3: DMS
 echo "[$(date)] Starting holo homodimer DMS at H524 ..."
-python3 "${REPO}/scripts/dms_H524_dimer.py" \
-    --wt_pdb     "${REPO}/inputs/1A52_clean_dimer.pdb" \
-    --est_params "${REPO}/inputs/EST.params" \
-    --xml        "${REPO}/scripts/dms_H524_dimer.xml" \
-    --out_dir    "${REPO}/outputs/dms_H524_dimer" \
+python3 "${REPO}/scripts/dms/dms_H524_dimer.py" \
+    --wt_pdb     "${REPO}/inputs/1A52/1A52_clean_dimer.pdb" \
+    --est_params "${REPO}/inputs/est_ligand/EST.params" \
+    --xml        "${REPO}/scripts/dms/dms_H524_dimer.xml" \
+    --out_dir    "${REPO}/outputs/dms/dms_1A52/dms_H524_dimer" \
     --nstruct    5 \
     --workers    "${SLURM_CPUS_PER_TASK}"
 

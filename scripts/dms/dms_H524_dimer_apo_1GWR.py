@@ -7,7 +7,7 @@ Deep mutation scan at H524 of the apo ERα homodimer + real TIF2 coactivator pep
 symmetrically on both chain A and chain B to model homozygous substitutions.
 InterfaceAnalyzerMover scores the AB_EF protein-peptide interface.
 
-Input:  inputs/1GWR_clean_dimer_apo.pdb       (chains A+B protein, E+F peptide, no ligand)
+Input:  inputs/1GWR/1GWR_clean_dimer_apo.pdb       (chains A+B protein, E+F peptide, no ligand)
         scripts/dms_H524_dimer_apo_1GWR.xml   (FastRelax + InterfaceAnalyzerMover AB_EF)
 
 Output: outputs/dms_H524_dimer_apo_1GWR/<tag>_rep<n>.pdb
@@ -131,13 +131,13 @@ def configure_logging(level=logging.INFO):
 def main():
     import argparse
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(
         description="Apo homodimer DMS at H524 of ERα + TIF2 peptides (1GWR) — "
                      "symmetric mutation, AB_EF interface"
     )
-    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1GWR_clean_dimer_apo.pdb"),
+    parser.add_argument("--wt_pdb",  default=os.path.join(repo, "inputs", "1GWR", "1GWR_clean_dimer_apo.pdb"),
                         help="Apo homodimer PDB (chains A+B protein, E+F peptide, no estradiol)")
     parser.add_argument("--xml",     default=os.path.join(here, "dms_H524_dimer_apo_1GWR.xml"),
                         help="RosettaScripts XML (FastRelax + InterfaceAnalyzerMover AB_EF)")

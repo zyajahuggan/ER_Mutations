@@ -42,7 +42,7 @@ except ImportError:
     sys.exit("matplotlib not found. Install with: pip install matplotlib")
 
 
-REPO_ROOT    = Path(__file__).resolve().parent.parent
+REPO_ROOT    = Path(__file__).resolve().parent.parent.parent
 DEFAULT_SCORES = REPO_ROOT / "outputs" / "analysis" / "pca" / "pca_scores.csv"
 DEFAULT_OUT    = REPO_ROOT / "outputs" / "analysis" / "pca" / "cluster_reps"
 

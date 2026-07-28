@@ -23,9 +23,9 @@ Removes waters in dimer modes; keeps chain-A waters in monomer modes unless --no
 
 Usage (from scripts/):
     python clean_1gwr.py                                                       # holo monomer + coactivator
-    python clean_1gwr.py --apo        --out_pdb ../inputs/1GWR_clean_apo.pdb
-    python clean_1gwr.py --dimer      --out_pdb ../inputs/1GWR_clean_dimer_apo.pdb
-    python clean_1gwr.py --dimer-holo --out_pdb ../inputs/1GWR_clean_dimer.pdb
+    python clean_1gwr.py --apo        --out_pdb ../inputs/1GWR/1GWR_clean_apo.pdb
+    python clean_1gwr.py --dimer      --out_pdb ../inputs/1GWR/1GWR_clean_dimer_apo.pdb
+    python clean_1gwr.py --dimer-holo --out_pdb ../inputs/1GWR/1GWR_clean_dimer.pdb
 """
 
 import argparse
@@ -128,11 +128,11 @@ def clean_cif(in_cif: str, out_pdb: str, protein_chains=("A", "B"), peptide_chai
 
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
-    repo = os.path.dirname(here)
+    repo = os.path.dirname(os.path.dirname(here))
 
     parser = argparse.ArgumentParser(description="Clean 1gwr.cif for ER DMS + real coactivator peptide")
-    parser.add_argument("--in_cif",         default=os.path.join(repo, "inputs", "1gwr.cif"))
-    parser.add_argument("--out_pdb",        default=os.path.join(repo, "inputs", "1GWR_clean.pdb"))
+    parser.add_argument("--in_cif",         default=os.path.join(repo, "inputs", "1GWR", "1gwr.cif"))
+    parser.add_argument("--out_pdb",        default=os.path.join(repo, "inputs", "1GWR", "1GWR_clean.pdb"))
     parser.add_argument("--protein_chains", nargs=2, default=["A", "B"],
                         help="Which biological dimer copy's protein chains to keep")
     parser.add_argument("--peptide_chains", nargs=2, default=["C", "D"],

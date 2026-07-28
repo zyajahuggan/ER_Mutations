@@ -27,9 +27,9 @@ from pyrosetta import pose_from_pdb, create_score_function
 from pyrosetta.rosetta.protocols.analysis import InterfaceAnalyzerMover
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
+REPO = os.path.dirname(os.path.dirname(HERE))
 STRUCT_DIR = os.path.join(REPO, "outputs", "coactivator_structures")
-EST_PARAMS = os.path.join(REPO, "inputs", "EST.params")
+EST_PARAMS = os.path.join(REPO, "inputs", "est_ligand", "EST.params")
 
 TARGETS = {
     "H524": {"wt": "H524H_wt", "mut": "H524L"},

@@ -16,24 +16,24 @@ source ~/.bashrc
 conda activate pyrosetta
 
 REPO=/scratch4/jgray21/zhuggan1/repos/ER_Mutations
-mkdir -p "${REPO}/logs" "${REPO}/outputs/dms_Y537_dimer_apo_1ERE"
+mkdir -p "${REPO}/logs" "${REPO}/outputs/dms/dms_1ERE/dms_Y537_dimer_apo_1ERE"
 
 # Step 1: Generate apo dimer PDB from 1ERE (chains A+B protein, no estradiol)
-if [[ ! -f "${REPO}/inputs/1ERE_clean_dimer_apo.pdb" ]]; then
+if [[ ! -f "${REPO}/inputs/1ERE/1ERE_clean_dimer_apo.pdb" ]]; then
     echo "[$(date)] Generating 1ERE apo dimer PDB ..."
-    python3 "${REPO}/scripts/clean_1ERE.py" \
-        --out_pdb "${REPO}/inputs/1ERE_clean_dimer_apo.pdb" \
+    python3 "${REPO}/scripts/clean/clean_1ERE.py" \
+        --out_pdb "${REPO}/inputs/1ERE/1ERE_clean_dimer_apo.pdb" \
         --dimer
 else
-    echo "[$(date)] Using existing ${REPO}/inputs/1ERE_clean_dimer_apo.pdb"
+    echo "[$(date)] Using existing ${REPO}/inputs/1ERE/1ERE_clean_dimer_apo.pdb"
 fi
 
 # Step 2: DMS
 echo "[$(date)] Starting 1ERE apo homodimer DMS at Y537 ..."
-python3 "${REPO}/scripts/dms_Y537_dimer_apo.py" \
-    --wt_pdb  "${REPO}/inputs/1ERE_clean_dimer_apo.pdb" \
-    --xml     "${REPO}/scripts/dms_Y537_dimer_apo.xml" \
-    --out_dir "${REPO}/outputs/dms_Y537_dimer_apo_1ERE" \
+python3 "${REPO}/scripts/dms/dms_Y537_dimer_apo.py" \
+    --wt_pdb  "${REPO}/inputs/1ERE/1ERE_clean_dimer_apo.pdb" \
+    --xml     "${REPO}/scripts/dms/dms_Y537_dimer_apo.xml" \
+    --out_dir "${REPO}/outputs/dms/dms_1ERE/dms_Y537_dimer_apo_1ERE" \
     --prefix  1ERE \
     --nstruct 5 \
     --workers "${SLURM_CPUS_PER_TASK}"
